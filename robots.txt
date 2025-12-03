@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Disallow admin and private directories
+Disallow: /assets/
+Disallow: /partials/
+
+# Allow specific assets
+Allow: /assets/images/
+Allow: /assets/icons/
+
+# Sitemap location
+Sitemap: https://www.aprealestate.co.uk/sitemap.xml
+
+# Crawl-delay (optional, adjust based on server capacity)
+Crawl-delay: 1
+

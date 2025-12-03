@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Terms of Service for AP Real Estate Solutions - Terms and conditions for using our services.">
+  <meta name="robots" content="noindex, follow">
+  <link rel="canonical" href="https://www.aprealestate.co.uk/terms.html">
+  
+  <title>Terms of Service - AP Real Estate Solutions</title>
+  
+  <link rel="icon" type="image/png" href="/assets/icons/favicon.png">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="/assets/styles/custom.css">
+</head>
+<body class="antialiased">
+
+  <div id="navbar-container"></div>
+
+  <main id="main-content" class="pt-0">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+      <h1 class="font-poppins font-bold text-4xl md:text-5xl text-[#1C2A39] mb-8">Terms of Service</h1>
+      <p class="text-gray-600 mb-8">Last updated: October 16, 2025</p>
+
+      <div class="prose prose-lg max-w-none">
+        <h2 class="font-poppins font-semibold text-2xl text-[#1C2A39] mt-8 mb-4">1. Agreement to Terms</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">By accessing or using our website and services, you agree to be bound by these Terms of Service and all applicable laws and regulations.</p>
+
+        <h2 class="font-poppins font-semibold text-2xl text-[#1C2A39] mt-8 mb-4">2. Use License</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">Permission is granted to temporarily access the materials on AP Real Estate Solutions' website for personal, non-commercial transitory viewing only.</p>
+
+        <h2 class="font-poppins font-semibold text-2xl text-[#1C2A39] mt-8 mb-4">3. Services</h2>
+        <p class="text-gray-700 leading-relaxed mb-4">We provide property management and lettings services including:</p>
+        <ul class="list-disc list-inside text-gray-700 mb-6 space-y-2">
+          <li>Guaranteed rent schemes</li>
+          <li>Full lettings management</li>
+          <li>Property maintenance</li>
+          <li>Tenant finding services</li>
+        </ul>
+
+        <h2 class="font-poppins font-semibold text-2xl text-[#1C2A39] mt-8 mb-4">4. Limitations</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">In no event shall AP Real Estate Solutions or its suppliers be liable for any damages arising out of the use or inability to use the materials on our website.</p>
+
+        <h2 class="font-poppins font-semibold text-2xl text-[#1C2A39] mt-8 mb-4">5. Governing Law</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">These terms shall be governed by and construed in accordance with the laws of England and Wales.</p>
+
+        <h2 class="font-poppins font-semibold text-2xl text-[#1C2A39] mt-8 mb-4">6. Contact Information</h2>
+        <p class="text-gray-700 leading-relaxed mb-6">For questions about these Terms, contact us at: <a href="mailto:legal@aprealestate.co.uk" class="text-[#C0A060] hover:underline">legal@aprealestate.co.uk</a></p>
+      </div>
+    </div>
+  </main>
+
+  <div id="footer-container"></div>
+
+  <script src="/assets/scripts/main.js"></script>
+  <script>
+    fetch('/partials/navbar.html').then(r => r.text()).then(d => { document.getElementById('navbar-container').innerHTML = d; if (typeof initNavbar === 'function') initNavbar(); if (typeof initMobileMenu === 'function') initMobileMenu(); });
+    fetch('/partials/footer.html').then(r => r.text()).then(d => document.getElementById('footer-container').innerHTML = d);
+  </script>
+</body>
+</html>
+

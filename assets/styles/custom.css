@@ -1,0 +1,875 @@
+/**
+ * AP Real Estate Solutions Ltd - Custom Styles
+ * Additional styles and animations for premium experience
+ */
+
+/* ========================================
+   FONTS
+   ======================================== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+
+/* ========================================
+   CUSTOM PROPERTIES
+   ======================================== */
+:root {
+  --color-white: #FFFFFF;
+  --color-navy: #1C2A39;
+  --color-graphite: #2F3A4A;
+  --color-gold: #C0A060;
+  --color-light-bg: #F7F7F7;
+  --color-slate: #1F2937;
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* ========================================
+   GLOBAL STYLES
+   ======================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  color: var(--color-slate);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
+
+.font-inter {
+  font-family: 'Inter', sans-serif;
+}
+
+/* ========================================
+   ACCESSIBILITY
+   ======================================== */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+.focus-visible:focus {
+  outline: 2px solid var(--color-gold);
+  outline-offset: 2px;
+}
+
+/* Skip to content link */
+a[href="#main-content"]:focus {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.75rem 1.5rem;
+  background: var(--color-gold);
+  color: white;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+/* ========================================
+   SCROLL ANIMATIONS
+   ======================================== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.fade-in-up-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Respect user preferences */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  
+  .fade-in-up {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ========================================
+   HERO SECTION
+   ======================================== */
+.hero-gradient {
+  background: linear-gradient(135deg, rgba(28, 42, 57, 0.95) 0%, rgba(47, 58, 74, 0.85) 100%);
+}
+
+.hero-overlay {
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
+}
+
+/* Full viewport height hero */
+section[style*="height: 100vh"] {
+  height: 100vh !important;
+  min-height: 100vh;
+  max-height: 100vh;
+  margin: 0 !important;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+/* Ensure navbar is transparent on load over hero */
+#navbar {
+  background: transparent;
+  transition: all 0.3s ease-in-out;
+  border-bottom: 1px solid transparent;
+  z-index: 50;
+}
+
+/* Logo styling - remove padding */
+#navbar img[src*="finnnnaly"] {
+  padding: 0 !important;
+  margin: 0 !important;
+  display: block;
+  object-fit: contain;
+}
+
+/* Mobile Menu Styles */
+#mobile-menu {
+  z-index: 1000 !important;
+  min-height: calc(100vh - 80px);
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+@media (max-width: 1023px) {
+  #navbar {
+    z-index: 50;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+  }
+  
+  #mobile-menu-btn {
+    z-index: 1001;
+    position: relative;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  /* Ensure mobile menu covers everything */
+  #mobile-menu {
+    position: fixed !important;
+    top: 80px !important;
+    left: 0 !important;
+    right: 0 !important;
+    bottom: 0 !important;
+    width: 100vw !important;
+    z-index: 1000 !important;
+    transform: translateX(100%) !important;
+    will-change: transform;
+    visibility: visible !important;
+    opacity: 1 !important;
+    display: block !important;
+  }
+  
+  #mobile-menu:not(.translate-x-full) {
+    transform: translateX(0) !important;
+  }
+  
+  /* Prevent body scroll when menu is open */
+  body.menu-open {
+    overflow: hidden !important;
+    position: fixed !important;
+    width: 100% !important;
+    height: 100% !important;
+    touch-action: none;
+  }
+  
+  /* Remove padding-top so navbar overlays hero video */
+  #main-content {
+    padding-top: 0;
+  }
+}
+
+/* Glass morphism effect on scroll */
+#navbar.scrolled {
+  background: rgba(28, 42, 57, 0.75) !important;
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile navbar: transparent by default, dark on scroll */
+@media (max-width: 1023px) {
+  #navbar {
+    background: transparent !important;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border-bottom: 1px solid transparent;
+    box-shadow: none;
+  }
+  
+  #navbar.scrolled {
+    background: rgba(28, 42, 57, 0.95) !important;
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  }
+}
+
+/* Keep text color white on scroll (dark glass) */
+#navbar.scrolled .nav-link {
+  color: #FFFFFF !important;
+}
+
+#navbar.scrolled .nav-link:hover {
+  color: #C0A060 !important;
+}
+
+#navbar.scrolled .nav-text {
+  color: #FFFFFF !important;
+}
+
+#navbar.scrolled #mobile-menu-btn {
+  color: #FFFFFF !important;
+}
+
+#navbar.scrolled #mobile-menu-btn:hover {
+  background: rgba(255, 255, 255, 0.1) !important;
+}
+
+.hero-video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+
+/* Ensure video plays smoothly on mobile */
+@media (max-width: 768px) {
+  .hero-video {
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+  }
+}
+
+.parallax-bg {
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+@media (max-width: 768px) {
+  .parallax-bg {
+    background-attachment: scroll;
+  }
+}
+
+/* ========================================
+   GLASSMORPHISM CARDS
+   ======================================== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* ========================================
+   GRADIENT TEXT
+   ======================================== */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-gold) 0%, #D4B876 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ========================================
+   BUTTONS
+   ======================================== */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+  transition: all var(--transition-base);
+}
+
+.btn-primary::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.btn-primary:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.btn-secondary {
+  border: 2px solid var(--color-gold);
+  color: var(--color-gold);
+  transition: all var(--transition-base);
+}
+
+.btn-secondary:hover {
+  background: var(--color-gold);
+  color: white;
+  box-shadow: 0 10px 30px rgba(192, 160, 96, 0.3);
+}
+
+/* ========================================
+   ACCORDION
+   ======================================== */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out;
+}
+
+.accordion-content.accordion-open {
+  max-height: 1000px;
+  transition: max-height 0.5s ease-in;
+}
+
+.accordion-icon {
+  transition: transform var(--transition-base);
+}
+
+/* ========================================
+   TIMELINE
+   ======================================== */
+.timeline-line {
+  position: relative;
+}
+
+.timeline-line::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, var(--color-gold), var(--color-graphite));
+  transform: translateX(-50%);
+}
+
+@media (max-width: 768px) {
+  .timeline-line::before {
+    left: 1.5rem;
+  }
+}
+
+.timeline-dot {
+  position: relative;
+  width: 1rem;
+  height: 1rem;
+  background: var(--color-gold);
+  border-radius: 50%;
+  border: 3px solid white;
+  box-shadow: 0 0 0 3px var(--color-gold);
+}
+
+.timeline-dot::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--color-gold);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  50% {
+    width: 2rem;
+    height: 2rem;
+    opacity: 0;
+  }
+}
+
+/* ========================================
+   STATS COUNTERS
+   ======================================== */
+.stat-card {
+  transition: all var(--transition-base);
+}
+
+.stat-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+.stat-number {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
+  line-height: 1;
+}
+
+/* ========================================
+   SCROLL INDICATOR
+   ======================================== */
+.scroll-indicator {
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(-10px);
+  }
+  60% {
+    transform: translateY(-5px);
+  }
+}
+
+/* ========================================
+   LOADING STATES
+   ======================================== */
+.skeleton {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: loading 1.5s ease-in-out infinite;
+}
+
+@keyframes loading {
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+/* ========================================
+   HOVER EFFECTS
+   ======================================== */
+.hover-lift {
+  transition: transform var(--transition-base), box-shadow var(--transition-base);
+}
+
+.hover-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.hover-scale {
+  transition: transform var(--transition-base);
+}
+
+.hover-scale:hover {
+  transform: scale(1.05);
+}
+
+/* ========================================
+   TESTIMONIAL SLIDER
+   ======================================== */
+.testimonial-slide {
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* ========================================
+   SCROLL TO TOP BUTTON
+   ======================================== */
+#scroll-to-top {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  width: 3rem;
+  height: 3rem;
+  background: var(--color-gold);
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 999;
+  transition: all var(--transition-base);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+#scroll-to-top:hover {
+  background: var(--color-navy);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* ========================================
+   FORM INPUTS
+   ======================================== */
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+  border-color: var(--color-gold);
+  box-shadow: 0 0 0 3px rgba(192, 160, 96, 0.1);
+}
+
+/* ========================================
+   COOKIE CONSENT BANNER
+   ======================================== */
+#cookie-consent {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: white;
+  border-top: 1px solid #e5e7eb;
+  padding: 1.5rem;
+  z-index: 1000;
+  box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideUp 0.5s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   CUSTOM SCROLLBAR
+   ======================================== */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-light-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-gold);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-navy);
+}
+
+/* ========================================
+   RESPONSIVE UTILITIES
+   ======================================== */
+@media (max-width: 640px) {
+  .text-responsive-xl {
+    font-size: 2rem;
+  }
+  
+  .text-responsive-lg {
+    font-size: 1.5rem;
+  }
+}
+
+/* ========================================
+   PRINT STYLES
+   ======================================== */
+@media print {
+  nav,
+  footer,
+  #scroll-to-top,
+  #cookie-consent {
+    display: none !important;
+  }
+  
+  body {
+    background: white;
+    color: black;
+  }
+}
+
+/* ========================================
+   HIGH CONTRAST MODE
+   ======================================== */
+@media (prefers-contrast: high) {
+  .btn-primary,
+  .btn-secondary {
+    border-width: 2px;
+  }
+}
+
+/* ========================================
+   SERVICE TABS ANIMATIONS
+   ======================================== */
+
+/* Hide scrollbar for horizontal scroll on mobile */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+/* Service content transitions - AMAZING animations */
+.service-content {
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  opacity: 0;
+  transform: translateX(60px) translateY(20px) scale(0.92) rotateY(10deg);
+  filter: blur(8px);
+  transform-origin: left center;
+  pointer-events: none;
+}
+
+.service-content.active {
+  position: relative;
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1) rotateY(0deg);
+  filter: blur(0);
+  pointer-events: auto;
+  animation: contentAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes contentAppear {
+  0% {
+    opacity: 0;
+    transform: translateX(60px) translateY(20px) scale(0.92) rotateY(10deg);
+    filter: blur(8px);
+  }
+  50% {
+    transform: translateX(-5px) translateY(-5px) scale(1.01) rotateY(-2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1) rotateY(0deg);
+    filter: blur(0);
+  }
+}
+
+/* Service tab - Beautiful card design */
+.service-tab {
+  position: relative;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  text-align: left;
+}
+
+.service-tab:not(.active):hover {
+  transform: translateX(4px);
+}
+
+.service-tab.active {
+  transform: translateX(6px) scale(1.02);
+}
+
+/* Mobile optimizations */
+@media (max-width: 1023px) {
+  .service-tab:not(.active):hover {
+    transform: scale(1.02);
+  }
+  
+  .service-tab.active {
+    transform: scale(1.05);
+  }
+  
+  .service-tab.active::before {
+    display: none; /* Hide glow effect on mobile */
+  }
+}
+
+/* ========================================
+   MOBILE RESPONSIVE IMPROVEMENTS
+   ======================================== */
+
+/* Ensure proper spacing on mobile */
+@media (max-width: 640px) {
+  body {
+    overflow-x: hidden;
+    width: 100%;
+  }
+  
+  /* Fix hero section on mobile */
+  section[style*="height: 100vh"] {
+    min-height: 100vh;
+    height: 100vh !important;
+  }
+  
+  /* Better text sizing on mobile */
+  .font-poppins {
+    font-size: clamp(1.25rem, 4vw, 1.5rem);
+  }
+  
+  /* Improve button sizes on mobile */
+  .btn-primary,
+  .btn-secondary {
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+  }
+  
+  /* Better spacing for sections */
+  section {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  /* Fix table overflow on mobile */
+  .overflow-x-auto {
+    -webkit-overflow-scrolling: touch;
+    overflow-x: auto;
+  }
+  
+  /* Ensure images don't overflow */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+  
+  /* Better grid layouts on mobile */
+  .grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem !important;
+  }
+}
+
+/* Tablet optimizations */
+@media (min-width: 641px) and (max-width: 1024px) {
+  .grid-cols-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .grid-cols-3 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Fix viewport issues on mobile */
+@supports (-webkit-touch-callout: none) {
+  /* iOS Safari specific fixes */
+  section[style*="height: 100vh"] {
+    height: -webkit-fill-available;
+    min-height: -webkit-fill-available;
+  }
+}
+
+/* Glow effect for active tab */
+.service-tab.active::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  background: linear-gradient(135deg, rgba(192, 160, 96, 0.3), rgba(160, 136, 80, 0.3));
+  border-radius: 12px;
+  filter: blur(10px);
+  opacity: 0.6;
+  z-index: -1;
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.6;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+
+/* Fade and slide animation for list items */
+@keyframes listSlideIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.service-content.active li {
+  animation: listSlideIn 0.5s ease-out;
+  animation-fill-mode: both;
+}
+
+.service-content.active li:nth-child(1) { animation-delay: 0.05s; }
+.service-content.active li:nth-child(2) { animation-delay: 0.1s; }
+.service-content.active li:nth-child(3) { animation-delay: 0.15s; }
+.service-content.active li:nth-child(4) { animation-delay: 0.2s; }
+.service-content.active li:nth-child(5) { animation-delay: 0.25s; }
+.service-content.active li:nth-child(6) { animation-delay: 0.3s; }
+.service-content.active li:nth-child(7) { animation-delay: 0.35s; }
+
+/* Title animation */
+.service-content.active h3 {
+  animation: titleBounce 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes titleBounce {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) scale(0.9);
+  }
+  50% {
+    transform: translateY(5px) scale(1.02);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* 3D perspective for content container */
+.service-content {
+  perspective: 1000px;
+}
+
