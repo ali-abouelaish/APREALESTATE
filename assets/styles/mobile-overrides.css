@@ -1,0 +1,357 @@
+/**
+ * MOBILE UI OVERRIDES - APP LIKE EXPERIENCE
+ * =========================================================================
+ * Scope: Mobile View Only (max-width: 1023px)
+ * Principles: Minimal, Clean, Lightweight, Calm, Content-Focused
+ * Non-Negotiable: DO NOT TOUCH DESKTOP RULES
+ * =========================================================================
+ */
+
+/* ========================================
+   1. VISIBILITY UTILITIES
+   ======================================== */
+
+/* Desktop Only Content - HIDDEN on Mobile */
+@media screen and (max-width: 1023px) {
+  .desktop-only-section {
+    display: none !important;
+  }
+
+  /* Hide specific existing IDs/Classes if we can't wrap them easily */
+  /* We will wrap existing sections in index.html with .desktop-view-wrapper */
+  .desktop-view-wrapper {
+    display: none !important;
+  }
+}
+
+/* Mobile Only Content - HIDDEN on Desktop */
+@media screen and (min-width: 1024px) {
+  .mobile-only-view {
+    display: none !important;
+  }
+}
+
+/* ========================================
+   2. MOBILE APP UI (Max-width: 1023px)
+   ======================================== */
+@media screen and (max-width: 1023px) {
+
+  /* 🛠 CORE LAYOUT */
+  body {
+    /* background-color: #FAFAFA !important; */
+    background-image: url('../images/bgmain.svg') !important;
+    background-size: cover !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    overflow-x: hidden !important;
+  }
+
+  /* Reset Main Padding */
+  /* Remove padding-top: 0 because with position: relative navbar, we don't need to compensate for fixed header overlap */
+  #main-content {
+    padding-top: 0 !important;
+  }
+
+  /* 🎨 APP TYPOGRAPHY */
+  .mobile-h1 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 700;
+    font-size: 2.25rem;
+    line-height: 1.1;
+    color: #1C2A39;
+    /* Navy Text */
+    margin-bottom: 0.5rem;
+    letter-spacing: -0.03em;
+    /* Engraved/Letterpress Effect */
+    text-shadow: 1px 1px 1px #FFFFFF;
+  }
+
+  .mobile-h2 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    color: #1C2A39;
+    margin-bottom: 1rem;
+    letter-spacing: -0.02em;
+    /* Engraved/Letterpress Effect */
+    text-shadow: 1px 1px 1px #FFFFFF;
+  }
+
+  .mobile-p {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #64748B;
+    margin-bottom: 1.5rem;
+    /* Soft engraved effect */
+    text-shadow: 0.5px 0.5px 0 #FFFFFF;
+  }
+
+  /* 🧱 APP COMPONENTS */
+
+  /* Hero Container */
+  /* Hero Container */
+  .mobile-hero {
+    /* Adjusted padding since navbar is relative now */
+    padding: 2rem 1.5rem 1rem 1.5rem;
+    background: transparent;
+    /* Remove card styles */
+    border-radius: 0;
+    box-shadow: none;
+    /* Separation from navbar */
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+  }
+
+  /* Action Cards (Landlord vs Tenant) */
+  .mobile-action-card {
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-action-card:active {
+    transform: scale(0.98);
+    background: #fafafa;
+  }
+
+  .mobile-action-card.primary {
+    background: #1C2A39;
+    border-color: #1C2A39;
+  }
+
+  .mobile-action-card.primary h3,
+  .mobile-action-card.primary p {
+    color: white !important;
+  }
+
+  /* Horizontal Scroll Snap Containers */
+  .mobile-snap-scroll {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 1rem;
+    padding: 0 1.5rem 2rem 1.5rem;
+    /* Bottom padding for shadow */
+    -webkit-overflow-scrolling: touch;
+    /* Momentum scroll */
+    scrollbar-width: none;
+    /* Firefox */
+  }
+
+  .mobile-snap-scroll::-webkit-scrollbar {
+    display: none;
+    /* Chrome/Safari */
+  }
+
+  .mobile-snap-item {
+    scroll-snap-align: start;
+    flex: 0 0 85%;
+    /* Shows a peek of the next card */
+    background: white;
+    border-radius: 1.25rem;
+    overflow: hidden;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  }
+
+  /* Compact Card for Portfolio */
+  .mobile-portfolio-card {
+    scroll-snap-align: start;
+    flex: 0 0 45%;
+    /* Compact: Show ~2.2 cards per screen */
+    aspect-ratio: 1/1;
+    /* Square cards */
+    background-size: cover;
+    background-position: center;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+  }
+
+  /* Gradient overlay for text visibility if needed */
+  .mobile-portfolio-card::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.4), transparent);
+  }
+
+  /* Stats Grid */
+  .mobile-stats-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    padding: 0 1.5rem 2rem 1.5rem;
+  }
+
+  .mobile-stat-card {
+    background: white;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    text-align: center;
+    border: 1px solid #E2E8F0;
+  }
+
+  /* Navbar Overrides for Mobile View */
+  #navbar {
+    background: #1C2A39 !important;
+    /* Navy */
+    position: relative !important;
+    /* Not sticky */
+    border-bottom: none !important;
+    backdrop-filter: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Ensure logo and text are visible on Navy */
+  #navbar .nav-text,
+  #navbar svg {
+    color: white !important;
+  }
+
+  .mobile-service-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0 1.5rem;
+  }
+
+  .mobile-service-item {
+    padding: 1rem;
+    background: white;
+    border-radius: 1rem;
+    border: 1px solid #F1F5F9;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+    transition: transform 0.2s ease;
+  }
+
+  .mobile-service-item:active {
+    transform: scale(0.98);
+  }
+
+  /* 🧵 HOW IT WORKS TIMELINE - LINKED CARDS */
+  .mobile-steps-container {
+    padding: 0 1.5rem;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .mobile-step-card {
+    display: flex;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+    /* Space for connector */
+    position: relative;
+    z-index: 2;
+  }
+
+  .step-number {
+    flex-shrink: 0;
+    width: 2.5rem;
+    height: 2.5rem;
+    background: linear-gradient(135deg, #1C2A39 0%, #0F172A 100%);
+    /* Navy Gradient for steps */
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: 700;
+    font-family: 'Poppins', sans-serif;
+    box-shadow: 0 4px 6px -1px rgba(28, 42, 57, 0.3);
+    border: 2px solid white;
+    z-index: 5;
+  }
+
+  /* The Card Content */
+  .step-content {
+    background: white;
+    padding: 1rem 1.25rem;
+    border-radius: 1rem;
+    border: 1px solid #E2E8F0;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    flex-grow: 1;
+    position: relative;
+    /* Optional: Pointer Triangle */
+    margin-bottom: 1rem;
+    /* Space between cards */
+  }
+
+  /* Triangle Pointer to look "Linked" from the left */
+  .step-content::before {
+    content: '';
+    position: absolute;
+    top: 1rem;
+    /* Align with number */
+    left: -6px;
+    width: 12px;
+    height: 12px;
+    background: white;
+    transform: rotate(45deg);
+    border-left: 1px solid #E2E8F0;
+    border-bottom: 1px solid #E2E8F0;
+  }
+
+  /* The Visual Line Connecting Steps */
+  .step-connector {
+    width: 2px;
+    background: #CBD5E1;
+    /* Lighter gray line */
+    position: absolute;
+    left: 2.75rem;
+    /* Align center of number (1.5rem padding + 1.25rem half width) */
+    top: 2rem;
+    bottom: -1rem;
+    /* Extend to next step */
+    z-index: 1;
+  }
+
+  /* Hide connector for the last item (handled by CSS targeting usually, but here manually inserted divs) */
+  /* Actually since we use manual .step-connector divs in HTML, we target those styles */
+  .step-connector {
+    /* Re-targeting correctly based on HTML structure which has explicit connector divs */
+    /* Wait, my HTML has <div class="step-connector"></div> separately */
+    /* To implement "linked cards", the line needs to be continuous. */
+    /* Let's override the separate div approach and use absolute positioning if possible, OR style the specific divs */
+    width: 2px;
+    height: auto;
+    min-height: 2rem;
+    background: #CBD5E1;
+    margin-left: 1.25rem;
+    margin-top: -0.5rem;
+    margin-bottom: -0.5rem;
+    /* Pull cards closer */
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Fix video hiding again just in case */
+  video,
+  .hero-video {
+    display: none !important;
+  }
+
+  /* Hide scroll indicator */
+  .scroll-indicator {
+    display: none !important;
+  }
+
+  /* Footer Clean up */
+  footer {
+    padding-top: 2rem !important;
+  }
+}
