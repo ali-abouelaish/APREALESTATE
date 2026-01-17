@@ -36,15 +36,29 @@
    ======================================== */
 @media screen and (max-width: 1023px) {
 
-  /* 🛠 CORE LAYOUT */
+  /* 🛠 CORE LAYOUT - LIGHTWEIGHT MOBILE BACKGROUND */
   body {
-    /* background-color: #FAFAFA !important; */
-    background-image: url('../images/bgmain.svg') !important;
-    background-size: cover !important;
-    background-position: center !important;
-    background-attachment: fixed !important;
-    background-repeat: no-repeat !important;
+    /* Simple gradient background - NO heavy patterns */
+    background: linear-gradient(180deg, #FDFCFB 0%, #F5F4F2 50%, #FAFAF8 100%) !important;
+    background-attachment: scroll !important;
     overflow-x: hidden !important;
+  }
+
+  /* Override inline SVG background */
+  body[style*="bgmain.svg"] {
+    background: linear-gradient(180deg, #FDFCFB 0%, #F5F4F2 50%, #FAFAF8 100%) !important;
+  }
+
+  /* PERFORMANCE: Disable blur filters on mobile */
+  .glass-card {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+  }
+
+  /* PERFORMANCE: Add will-change for scroll optimization */
+  .mobile-snap-scroll {
+    will-change: scroll-position;
+    -webkit-overflow-scrolling: touch;
   }
 
   /* Reset Main Padding */
@@ -203,21 +217,45 @@
     border: 1px solid #E2E8F0;
   }
 
-  /* Navbar Overrides for Mobile View */
+  /* Navbar Overrides for Mobile View - SOLID BACKGROUND */
   #navbar {
     background: #1C2A39 !important;
-    /* Navy */
+    /* Solid Navy - no transparency */
     position: relative !important;
-    /* Not sticky */
-    border-bottom: none !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1) !important;
     backdrop-filter: none !important;
-    box-shadow: none !important;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15) !important;
   }
 
   /* Ensure logo and text are visible on Navy */
   #navbar .nav-text,
   #navbar svg {
     color: white !important;
+  }
+
+  /* Mobile Menu Toggle Button - IMPROVED */
+  #mobile-menu-btn {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.25) !important;
+    border-radius: 0.75rem !important;
+    width: 44px !important;
+    height: 44px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  #mobile-menu-btn:active {
+    background: rgba(192, 160, 96, 0.4) !important;
+    transform: scale(0.95);
+  }
+
+  #mobile-menu-btn svg {
+    pointer-events: none !important;
   }
 
   .mobile-service-list {
@@ -243,20 +281,18 @@
     transform: scale(0.98);
   }
 
-  /* 🧵 HOW IT WORKS TIMELINE - LINKED CARDS */
+  /* 🧵 HOW IT WORKS - CLEAN STEPPER (No connector lines) */
   .mobile-steps-container {
     padding: 0 1.5rem;
     display: flex;
     flex-direction: column;
+    gap: 1rem;
   }
 
   .mobile-step-card {
     display: flex;
     gap: 1rem;
-    padding-bottom: 0.5rem;
-    /* Space for connector */
-    position: relative;
-    z-index: 2;
+    align-items: flex-start;
   }
 
   .step-number {
@@ -264,7 +300,6 @@
     width: 2.5rem;
     height: 2.5rem;
     background: linear-gradient(135deg, #1C2A39 0%, #0F172A 100%);
-    /* Navy Gradient for steps */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -272,9 +307,7 @@
     color: white;
     font-weight: 700;
     font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 6px -1px rgba(28, 42, 57, 0.3);
-    border: 2px solid white;
-    z-index: 5;
+    box-shadow: 0 2px 4px rgba(28, 42, 57, 0.2);
   }
 
   /* The Card Content */
@@ -283,60 +316,17 @@
     padding: 1rem 1.25rem;
     border-radius: 1rem;
     border: 1px solid #E2E8F0;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
     flex-grow: 1;
-    position: relative;
-    /* Optional: Pointer Triangle */
-    margin-bottom: 1rem;
-    /* Space between cards */
   }
 
-  /* Triangle Pointer to look "Linked" from the left */
+  /* Hide connector lines - they don't render correctly */
+  .step-connector {
+    display: none !important;
+  }
+
+  /* Remove the pointer triangle */
   .step-content::before {
-    content: '';
-    position: absolute;
-    top: 1rem;
-    /* Align with number */
-    left: -6px;
-    width: 12px;
-    height: 12px;
-    background: white;
-    transform: rotate(45deg);
-    border-left: 1px solid #E2E8F0;
-    border-bottom: 1px solid #E2E8F0;
-  }
-
-  /* The Visual Line Connecting Steps */
-  .step-connector {
-    width: 2px;
-    background: #CBD5E1;
-    /* Lighter gray line */
-    position: absolute;
-    left: 2.75rem;
-    /* Align center of number (1.5rem padding + 1.25rem half width) */
-    top: 2rem;
-    bottom: -1rem;
-    /* Extend to next step */
-    z-index: 1;
-  }
-
-  /* Hide connector for the last item (handled by CSS targeting usually, but here manually inserted divs) */
-  /* Actually since we use manual .step-connector divs in HTML, we target those styles */
-  .step-connector {
-    /* Re-targeting correctly based on HTML structure which has explicit connector divs */
-    /* Wait, my HTML has <div class="step-connector"></div> separately */
-    /* To implement "linked cards", the line needs to be continuous. */
-    /* Let's override the separate div approach and use absolute positioning if possible, OR style the specific divs */
-    width: 2px;
-    height: auto;
-    min-height: 2rem;
-    background: #CBD5E1;
-    margin-left: 1.25rem;
-    margin-top: -0.5rem;
-    margin-bottom: -0.5rem;
-    /* Pull cards closer */
-    position: relative;
-    z-index: 1;
+    display: none;
   }
 
   /* Fix video hiding again just in case */
@@ -353,5 +343,17 @@
   /* Footer Clean up */
   footer {
     padding-top: 2rem !important;
+  }
+
+  /* PERFORMANCE: Limit image sizes on mobile */
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* PERFORMANCE: Force GPU acceleration on scroll containers */
+  .mobile-snap-scroll {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
   }
 }

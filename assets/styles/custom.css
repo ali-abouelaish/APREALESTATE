@@ -4,9 +4,9 @@
  */
 
 /* ========================================
-   FONTS
+   FONTS - OPTIMIZED: Only load essential weights
    ======================================== */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600;700&family=Inter:wght@400;600&display=swap');
 
 /* ========================================
    CUSTOM PROPERTIES
@@ -105,6 +105,7 @@ a[href="#main-content"]:focus {
 
 /* Respect user preferences */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -113,7 +114,7 @@ a[href="#main-content"]:focus {
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  
+
   .fade-in-up {
     opacity: 1;
     transform: none;
@@ -177,14 +178,14 @@ section[style*="height: 100vh"] {
     right: 0;
     width: 100%;
   }
-  
+
   #mobile-menu-btn {
     z-index: 1001;
     position: relative;
     cursor: pointer;
     -webkit-tap-highlight-color: transparent;
   }
-  
+
   /* Ensure mobile menu covers everything */
   #mobile-menu {
     position: fixed !important;
@@ -200,11 +201,11 @@ section[style*="height: 100vh"] {
     opacity: 1 !important;
     display: block !important;
   }
-  
+
   #mobile-menu:not(.translate-x-full) {
     transform: translateX(0) !important;
   }
-  
+
   /* Prevent body scroll when menu is open */
   body.menu-open {
     overflow: hidden !important;
@@ -213,7 +214,7 @@ section[style*="height: 100vh"] {
     height: 100% !important;
     touch-action: none;
   }
-  
+
   /* Remove padding-top so navbar overlays hero video */
   #main-content {
     padding-top: 0;
@@ -238,7 +239,7 @@ section[style*="height: 100vh"] {
     border-bottom: 1px solid transparent;
     box-shadow: none;
   }
-  
+
   #navbar.scrolled {
     background: rgba(28, 42, 57, 0.855) !important;
     backdrop-filter: blur(20px) saturate(180%);
@@ -426,11 +427,14 @@ section[style*="height: 100vh"] {
 }
 
 @keyframes pulse {
-  0%, 100% {
+
+  0%,
+  100% {
     width: 0;
     height: 0;
     opacity: 1;
   }
+
   50% {
     width: 2rem;
     height: 2rem;
@@ -464,12 +468,19 @@ section[style*="height: 100vh"] {
 }
 
 @keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
+
+  0%,
+  20%,
+  50%,
+  80%,
+  100% {
     transform: translateY(0);
   }
+
   40% {
     transform: translateY(-10px);
   }
+
   60% {
     transform: translateY(-5px);
   }
@@ -488,6 +499,7 @@ section[style*="height: 100vh"] {
   0% {
     background-position: 200% 0;
   }
+
   100% {
     background-position: -200% 0;
   }
@@ -578,6 +590,7 @@ select:focus {
   from {
     transform: translateY(100%);
   }
+
   to {
     transform: translateY(0);
   }
@@ -610,7 +623,7 @@ select:focus {
   .text-responsive-xl {
     font-size: 2rem;
   }
-  
+
   .text-responsive-lg {
     font-size: 1.5rem;
   }
@@ -620,13 +633,14 @@ select:focus {
    PRINT STYLES
    ======================================== */
 @media print {
+
   nav,
   footer,
   #scroll-to-top,
   #cookie-consent {
     display: none !important;
   }
-  
+
   body {
     background: white;
     color: black;
@@ -637,6 +651,7 @@ select:focus {
    HIGH CONTRAST MODE
    ======================================== */
 @media (prefers-contrast: high) {
+
   .btn-primary,
   .btn-secondary {
     border-width: 2px;
@@ -686,9 +701,11 @@ select:focus {
     transform: translateX(60px) translateY(20px) scale(0.92) rotateY(10deg);
     filter: blur(8px);
   }
+
   50% {
     transform: translateX(-5px) translateY(-5px) scale(1.01) rotateY(-2deg);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0) translateY(0) scale(1) rotateY(0deg);
@@ -711,18 +728,46 @@ select:focus {
   transform: translateX(6px) scale(1.02);
 }
 
-/* Mobile optimizations */
+/* Mobile optimizations - PERFORMANCE FOCUSED */
 @media (max-width: 1023px) {
+
+  /* PERFORMANCE: Disable all complex animations and transforms on mobile */
+  .service-content {
+    transition: opacity 0.2s ease !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
+  .service-content.active {
+    animation: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+
   .service-tab:not(.active):hover {
-    transform: scale(1.02);
+    transform: none;
   }
-  
+
   .service-tab.active {
-    transform: scale(1.05);
+    transform: none;
   }
-  
+
   .service-tab.active::before {
-    display: none; /* Hide glow effect on mobile */
+    display: none;
+    /* Hide glow effect on mobile */
+  }
+
+  /* PERFORMANCE: Disable parallax on mobile */
+  .parallax-bg {
+    background-attachment: scroll !important;
+  }
+
+  /* PERFORMANCE: Disable hover effects that trigger repaints */
+  .hover-lift:hover,
+  .hover-scale:hover,
+  .stat-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
   }
 }
 
@@ -736,43 +781,43 @@ select:focus {
     overflow-x: hidden;
     width: 100%;
   }
-  
+
   /* Fix hero section on mobile */
   section[style*="height: 100vh"] {
     min-height: 100vh;
     height: 100vh !important;
   }
-  
+
   /* Better text sizing on mobile */
   .font-poppins {
     font-size: clamp(1.25rem, 4vw, 1.5rem);
   }
-  
+
   /* Improve button sizes on mobile */
   .btn-primary,
   .btn-secondary {
     padding: 0.75rem 1.5rem;
     font-size: 0.875rem;
   }
-  
+
   /* Better spacing for sections */
   section {
     padding-left: 1rem;
     padding-right: 1rem;
   }
-  
+
   /* Fix table overflow on mobile */
   .overflow-x-auto {
     -webkit-overflow-scrolling: touch;
     overflow-x: auto;
   }
-  
+
   /* Ensure images don't overflow */
   img {
     max-width: 100%;
     height: auto;
   }
-  
+
   /* Better grid layouts on mobile */
   .grid {
     grid-template-columns: 1fr !important;
@@ -785,7 +830,7 @@ select:focus {
   .grid-cols-2 {
     grid-template-columns: repeat(2, 1fr);
   }
-  
+
   .grid-cols-3 {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -793,6 +838,7 @@ select:focus {
 
 /* Fix viewport issues on mobile */
 @supports (-webkit-touch-callout: none) {
+
   /* iOS Safari specific fixes */
   section[style*="height: 100vh"] {
     height: -webkit-fill-available;
@@ -814,10 +860,13 @@ select:focus {
 }
 
 @keyframes pulseGlow {
-  0%, 100% {
+
+  0%,
+  100% {
     opacity: 0.6;
     transform: scale(1);
   }
+
   50% {
     opacity: 0.8;
     transform: scale(1.05);
@@ -830,6 +879,7 @@ select:focus {
     opacity: 0;
     transform: translateX(-20px);
   }
+
   100% {
     opacity: 1;
     transform: translateX(0);
@@ -841,13 +891,33 @@ select:focus {
   animation-fill-mode: both;
 }
 
-.service-content.active li:nth-child(1) { animation-delay: 0.05s; }
-.service-content.active li:nth-child(2) { animation-delay: 0.1s; }
-.service-content.active li:nth-child(3) { animation-delay: 0.15s; }
-.service-content.active li:nth-child(4) { animation-delay: 0.2s; }
-.service-content.active li:nth-child(5) { animation-delay: 0.25s; }
-.service-content.active li:nth-child(6) { animation-delay: 0.3s; }
-.service-content.active li:nth-child(7) { animation-delay: 0.35s; }
+.service-content.active li:nth-child(1) {
+  animation-delay: 0.05s;
+}
+
+.service-content.active li:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.service-content.active li:nth-child(3) {
+  animation-delay: 0.15s;
+}
+
+.service-content.active li:nth-child(4) {
+  animation-delay: 0.2s;
+}
+
+.service-content.active li:nth-child(5) {
+  animation-delay: 0.25s;
+}
+
+.service-content.active li:nth-child(6) {
+  animation-delay: 0.3s;
+}
+
+.service-content.active li:nth-child(7) {
+  animation-delay: 0.35s;
+}
 
 /* Title animation */
 .service-content.active h3 {
@@ -859,9 +929,11 @@ select:focus {
     opacity: 0;
     transform: translateY(-20px) scale(0.9);
   }
+
   50% {
     transform: translateY(5px) scale(1.02);
   }
+
   100% {
     opacity: 1;
     transform: translateY(0) scale(1);
@@ -872,4 +944,3 @@ select:focus {
 .service-content {
   perspective: 1000px;
 }
-

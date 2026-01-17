@@ -92,22 +92,15 @@ function setActivePage() {
 }
 
 // ========================================
-// MOBILE MENU TOGGLE
+// MOBILE MENU TOGGLE - IMPROVED & RELIABLE
 // ========================================
 
 function initMobileMenu() {
-  console.log('Initializing mobile menu...');
-  
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
   
-  if (!menuBtn) {
-    console.error('Mobile menu button not found!');
-    return;
-  }
-  
-  if (!mobileMenu) {
-    console.error('Mobile menu not found!');
+  if (!menuBtn || !mobileMenu) {
+    console.log('Mobile menu elements not found, skipping init');
     return;
   }
 
@@ -115,70 +108,57 @@ function initMobileMenu() {
   const menuCloseIcon = document.getElementById('menu-close-icon');
 
   if (!menuOpenIcon || !menuCloseIcon) {
-    console.error('Menu icons not found!', { menuOpenIcon: !!menuOpenIcon, menuCloseIcon: !!menuCloseIcon });
+    console.log('Menu icons not found');
     return;
   }
 
-  console.log('All mobile menu elements found, setting up...');
+  // Prevent multiple initializations
+  if (menuBtn.dataset.initialized === 'true') {
+    return;
+  }
+  menuBtn.dataset.initialized = 'true';
 
   // Ensure menu is closed initially
   mobileMenu.classList.add('translate-x-full');
-  mobileMenu.style.zIndex = '1000';
-  mobileMenu.style.visibility = 'visible';
-  mobileMenu.style.opacity = '1';
-  mobileMenu.style.display = 'block';
-
+  
   let isOpen = false;
+  let isAnimating = false; // Prevent rapid toggling
 
   const openMenu = () => {
-    console.log('Opening mobile menu');
+    if (isAnimating) return;
+    isAnimating = true;
     isOpen = true;
+    
     mobileMenu.classList.remove('translate-x-full');
     menuOpenIcon.classList.add('hidden');
     menuCloseIcon.classList.remove('hidden');
     
     // Prevent body scroll
-    const scrollY = window.scrollY;
     document.body.style.overflow = 'hidden';
-    document.body.style.position = 'fixed';
-    document.body.style.width = '100%';
-    document.body.style.top = `-${scrollY}px`;
     document.body.classList.add('menu-open');
-    
     menuBtn.setAttribute('aria-expanded', 'true');
-    mobileMenu.style.zIndex = '1000';
+    
+    setTimeout(() => { isAnimating = false; }, 300);
   };
 
   const closeMenu = () => {
-    console.log('Closing mobile menu');
+    if (isAnimating) return;
+    isAnimating = true;
     isOpen = false;
+    
     mobileMenu.classList.add('translate-x-full');
     menuOpenIcon.classList.remove('hidden');
     menuCloseIcon.classList.add('hidden');
     
     // Restore body scroll
-    const scrollY = document.body.style.top;
     document.body.style.overflow = '';
-    document.body.style.position = '';
-    document.body.style.width = '';
-    document.body.style.top = '';
     document.body.classList.remove('menu-open');
-    
-    if (scrollY) {
-      window.scrollTo(0, parseInt(scrollY || '0') * -1);
-    }
-    
     menuBtn.setAttribute('aria-expanded', 'false');
+    
+    setTimeout(() => { isAnimating = false; }, 300);
   };
 
-  const toggleMenu = (e) => {
-    if (e) {
-      e.preventDefault();
-      e.stopPropagation();
-    }
-    
-    console.log('Toggle menu called, isOpen:', isOpen);
-    
+  const toggleMenu = () => {
     if (isOpen) {
       closeMenu();
     } else {
@@ -186,34 +166,37 @@ function initMobileMenu() {
     }
   };
 
-  // Add click event
-  menuBtn.onclick = toggleMenu;
-  
-  // Also add event listener for redundancy
-  menuBtn.addEventListener('click', toggleMenu, { capture: true });
-  
-  // Touch event for mobile
-  menuBtn.addEventListener('touchend', (e) => {
+  // Single event handler - use pointerup for best cross-device support
+  let lastToggleTime = 0;
+  const handleToggle = (e) => {
     e.preventDefault();
-    toggleMenu(e);
-  }, { passive: false, capture: true });
+    e.stopPropagation();
+    
+    // Debounce: prevent double-firing within 300ms
+    const now = Date.now();
+    if (now - lastToggleTime < 300) return;
+    lastToggleTime = now;
+    
+    toggleMenu();
+  };
 
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (isOpen && !mobileMenu.contains(e.target) && !menuBtn.contains(e.target)) {
-      closeMenu();
-    }
-  }, true);
-
-  // Close menu when clicking a link
-  const menuLinks = mobileMenu.querySelectorAll('a');
-  menuLinks.forEach(link => {
-    link.addEventListener('click', () => {
-      closeMenu();
-    });
+  // Use pointer events for unified touch/mouse handling
+  menuBtn.addEventListener('pointerup', handleToggle, { passive: false });
+  
+  // Fallback for older browsers
+  menuBtn.addEventListener('click', (e) => {
+    // Only use click if pointerup didn't fire
+    const now = Date.now();
+    if (now - lastToggleTime < 100) return; // pointerup already handled it
+    handleToggle(e);
   });
 
-  // Close menu on escape key
+  // Close menu when clicking a link
+  mobileMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close on escape key
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && isOpen) {
       closeMenu();
