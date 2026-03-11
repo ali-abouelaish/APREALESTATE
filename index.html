@@ -41,8 +41,8 @@
   <script src="https://cdn.tailwindcss.com"></script>
 
   <!-- Custom Styles -->
-  <link rel="stylesheet" href="/assets/styles/custom.css">
-  <link rel="stylesheet" href="/assets/styles/mobile-overrides.css">
+  <link rel="stylesheet" href="./assets/styles/custom.css">
+  <link rel="stylesheet" href="./assets/styles/mobile-overrides.css?v=7">
 
   <!-- JSON-LD Schema -->
   <script type="application/ld+json">
@@ -60,7 +60,7 @@
       "addressCountry": "UK"
     },
     "telephone": "+442033973845",
-    "email": "info@ap-propertygroup.co.uk",
+    "email": "info@aprealestate.co.uk",
     "url": "https://www.aprealestate.co.uk",
     "priceRange": "££",
     "openingHours": "Mo-Fr 09:00-18:00",
@@ -411,8 +411,8 @@
           style="background-image: url('./assets/images/drive/5F57B465-8F2C-4B07-8363-E63CBCA9AF38.JPG');"></div>
       </div>
       <div class="px-6 text-center pb-8">
-        <a href="/sales.html" class="inline-block mt-1 text-[#C0A060] font-semibold text-xs py-2">View Full Gallery
-          &rarr;</a>
+        <a href="#portfolio-gallery" class="inline-block mt-1 text-[#C0A060] font-semibold text-xs py-2">View Full
+          Gallery &rarr;</a>
       </div>
     </div>
 
@@ -1621,7 +1621,7 @@
                 <h3 class="font-poppins font-bold text-xl md:text-2xl text-[#1C2A39] mb-3 md:mb-4">Sales & Lettings</h3>
                 <p class="text-gray-600 leading-relaxed mb-4 text-sm md:text-base">Whether you're buying, selling, or
                   letting, our expert team delivers results with personalized service.</p>
-                <a href="/contact.html"
+                <a href="https://www.zoopla.co.uk/to-rent/property/uk/?branch_id=164100&include_sold=true&include_rented=true"
                   class="text-[#C0A060] font-semibold inline-flex items-center group text-sm md:text-base">
                   Learn More
                   <svg
@@ -1733,7 +1733,7 @@
       </section>
 
       <!-- Property Gallery Section -->
-      <section class="py-16 md:py-24 relative overflow-hidden">
+      <section id="property_portfolio" class="py-16 md:py-24 relative overflow-hidden">
         <!-- Background overlay for better text readability -->
 
         <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -2057,13 +2057,16 @@
     </div>
   </div>
 
+  <!-- Mobile Sticky CTA Container -->
+  <div id="mobile-cta-container"></div>
+
   <!-- Main JavaScript -->
-  <script src="/assets/scripts/main.js"></script>
+  <script src="./assets/scripts/main.js"></script>
 
   <!-- Load Partials -->
   <script>
     // Load navbar
-    fetch('/partials/navbar.html')
+    fetch('./partials/navbar.html?v=4')
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-container').innerHTML = data;
@@ -2073,7 +2076,7 @@
       });
 
     // Load footer
-    fetch('/partials/footer.html')
+    fetch('./partials/footer.html?v=5')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-container').innerHTML = data;

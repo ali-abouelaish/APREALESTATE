@@ -1,0 +1,712 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Overseas and remote UK property investment. AP Real Estate acts as your on-the-ground operating partner for sourcing, refurbishing, and managing your UK assets.">
+    <meta name="keywords"
+        content="UK property investment, overseas investor, property sourcing, refurb management, property management London">
+    <link rel="canonical" href="https://www.aprealestate.co.uk/investments.html">
+
+    <title>UK Property Investment & Sourcing | AP Real Estate Solutions</title>
+
+    <link rel="icon" type="image/png" href="/assets/icons/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="/assets/styles/custom.css">
+    <link rel="stylesheet" href="/assets/styles/mobile-overrides.css?v=7">
+
+    <style>
+        /* Specific Investments Page Overrides */
+        .pain-point-check {
+            flex-shrink: 0;
+            width: 24px;
+            height: 24px;
+            background-color: rgba(220, 38, 38, 0.1);
+            /* Red tint for problem */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #ef4444;
+            margin-top: 4px;
+        }
+
+        .phase-icon-box {
+            width: 64px;
+            height: 64px;
+            background: linear-gradient(135deg, #C0A060 0%, #A08850 100%);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            box-shadow: 0 10px 25px -5px rgba(192, 160, 96, 0.4);
+            margin-bottom: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .process-card:hover .phase-icon-box {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .package-card {
+            border: 1px solid #e5e7eb;
+            transition: all 0.3s ease;
+        }
+
+        .package-card.recommended {
+            border-color: #C0A060;
+            box-shadow: 0 20px 40px -10px rgba(192, 160, 96, 0.2);
+            transform: translateY(-10px);
+        }
+
+        /* Responsive timeline */
+        .step-timeline {
+            position: relative;
+        }
+
+        .step-timeline::before {
+            content: '';
+            position: absolute;
+            top: 24px;
+            left: 24px;
+            bottom: 24px;
+            width: 2px;
+            background: #e5e7eb;
+            z-index: 0;
+        }
+
+        @media (min-width: 1024px) {
+            .step-timeline {
+                display: flex;
+                justify-content: space-between;
+                position: relative;
+            }
+
+            .step-timeline::before {
+                top: 24px;
+                left: 50px;
+                right: 50px;
+                bottom: auto;
+                height: 2px;
+                width: auto;
+            }
+
+            .step-item {
+                flex: 1;
+                text-align: center;
+                position: relative;
+                z-index: 1;
+                padding: 0 15px;
+            }
+
+            .step-number {
+                margin: 0 auto 15px;
+            }
+        }
+    </style>
+</head>
+
+<body class="antialiased"
+    style="background-image: url('/assets/images/bgmain.svg'); background-attachment: fixed; background-position: center; background-size: cover; background-repeat: no-repeat;">
+
+    <!-- Load Navbar -->
+    <div id="navbar-container"></div>
+
+    <main id="main-content" class="pt-0"> <!-- Using pt-0 to let hero sit under transparent navbar -->
+
+        <!-- Hero Section -->
+        <section class="relative bg-[#1C2A39] text-white py-24 md:py-32 lg:py-40 overflow-hidden">
+            <div class="absolute inset-0 z-0 opacity-40">
+                <div class="absolute inset-0 bg-gradient-to-r from-[#1C2A39] via-[#1C2A39]/90 to-transparent z-10">
+                </div>
+                <!-- Using a placeholder pattern or standard building image if assets/images/building.jpg doesn't exist. -->
+                <img src="/assets/images/drive/picfront.JPG" alt="UK Property" class="w-full h-full object-cover">
+            </div>
+
+            <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl fade-in-up">
+                    <span
+                        class="inline-block px-4 py-1.5 bg-[#C0A060]/20 text-[#C0A060] text-sm font-bold uppercase tracking-wider rounded-full mb-6 border border-[#C0A060]/30">For
+                        Overseas & Remote Investors</span>
+                    <h1 class="font-poppins font-bold text-4xl md:text-5xl lg:text-6xl leading-tight mb-6">
+                        Your UK Property.<br>
+                        <span class="text-[#C0A060]">Our Execution.</span>
+                    </h1>
+                    <p class="text-xl md:text-2xl text-gray-300 mb-10 leading-relaxed font-light">
+                        We act as your on-the-ground UK operating partner — we source, negotiate, project-manage, and
+                        run the asset.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#investor-form"
+                            class="inline-flex justify-center flex-1 sm:flex-none btn-primary px-8 py-4 bg-[#C0A060] text-white rounded-xl font-bold text-lg hover:bg-[#A08850] shadow-xl hover:shadow-[#C0A060]/20 transition-all">
+                            Register Investor Interest
+                        </a>
+                        <a href="#the-problem"
+                            class="inline-flex justify-center flex-1 sm:flex-none px-8 py-4 bg-white/10 text-white rounded-xl font-semibold text-lg hover:bg-white/20 border border-white/20 transition-all backdrop-blur-sm">
+                            Learn How
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- The Problem We Solve -->
+        <section id="the-problem" class="py-20 md:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                    <div class="fade-in-up">
+                        <h2 class="font-poppins font-bold text-3xl md:text-4xl text-[#1C2A39] mb-6">
+                            Investing Remotely is <span class="text-red-600">Broken.</span>
+                        </h2>
+                        <p class="text-lg text-gray-600 mb-8 leading-relaxed">
+                            If you are not physically in the UK, buying and managing property is a massive liability.
+                            Turnkey providers overcharge, builders cut corners, and agents just want their commission.
+                        </p>
+
+                        <div class="space-y-6">
+                            <!-- Pain Points -->
+                            <div class="flex items-start gap-4">
+                                <div class="pain-point-check">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#1C2A39] text-xl">Too much deal noise, not enough signal.
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="pain-point-check">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#1C2A39] text-xl">Remote refurbs = budget & timeline
+                                        drift.</h3>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="pain-point-check">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#1C2A39] text-xl">UK compliance and leasehold is a
+                                        minefield.</h3>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="pain-point-check">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#1C2A39] text-xl">Voids and poor tenant ops kill ROI.
+                                    </h3>
+                                </div>
+                            </div>
+
+                            <div class="flex items-start gap-4">
+                                <div class="pain-point-check">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3"
+                                            d="M6 18L18 6M6 6l12 12"></path>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <h3 class="font-bold text-[#1C2A39] text-xl">FX and financing without a local
+                                        operator is hard.</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="relative fade-in-up" style="animation-delay: 0.2s;">
+                        <div
+                            class="absolute inset-0 bg-gradient-to-tr from-[#C0A060] to-[#1C2A39] rounded-3xl transform rotate-3 scale-105 opacity-20">
+                        </div>
+                        <div class="relative bg-[#1F2937] rounded-3xl p-8 md:p-12 text-white shadow-2xl">
+                            <h3 class="font-poppins font-bold text-2xl mb-6">The AP Real Estate Solution</h3>
+                            <p class="text-gray-300 text-lg mb-8">
+                                We don't sell you a dream. We run the numbers, inspect the brickwork, hammer the price
+                                down, manage the builders, and put a great tenant in.
+                            </p>
+                            <p class="text-[#C0A060] font-bold text-xl italic border-l-4 border-[#C0A060] pl-4">
+                                "Direct execution. No fluff."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- What We Do (4 Phases) -->
+        <section class="py-20 md:py-28 bg-[#F7F7F7]">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                    <h2 class="font-poppins font-bold text-3xl md:text-5xl text-[#1C2A39] mb-4">What We Do</h2>
+                    <p class="text-lg text-gray-600">The complete lifecycle of a UK property investment, managed by one
+                        team.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+
+                    <!-- Phase 1 -->
+                    <div
+                        class="process-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 fade-in-up hover:shadow-xl transition-shadow">
+                        <div class="phase-icon-box">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-poppins font-bold text-2xl text-[#1C2A39] mb-3">1. Acquire</h3>
+                        <p class="text-gray-600 mb-4">Sourcing, aggressive negotiation, and rigorous due diligence
+                            coordination.</p>
+                        <ul class="text-sm text-gray-500 space-y-2">
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> Deal viability
+                                check</li>
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> Conveyancing
+                                management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 2 -->
+                    <div class="process-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 fade-in-up hover:shadow-xl transition-shadow"
+                        style="animation-delay: 0.1s;">
+                        <div class="phase-icon-box">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-poppins font-bold text-2xl text-[#1C2A39] mb-3">2. Add Value</h3>
+                        <p class="text-gray-600 mb-4">Refurbishment management, quality control, and strict snagging.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-2">
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> vetted contractors
+                            </li>
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> Weekly video
+                                updates</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 3 -->
+                    <div class="process-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 fade-in-up hover:shadow-xl transition-shadow"
+                        style="animation-delay: 0.2s;">
+                        <div class="phase-icon-box">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z">
+                                </path>
+                            </svg>
+                        </div>
+                        <h3 class="font-poppins font-bold text-2xl text-[#1C2A39] mb-3">3. Operate</h3>
+                        <p class="text-gray-600 mb-4">Lettings, ongoing maintenance, and total UK compliance management.
+                        </p>
+                        <ul class="text-sm text-gray-500 space-y-2">
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> Zero-void focus
+                            </li>
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> Full property
+                                management</li>
+                        </ul>
+                    </div>
+
+                    <!-- Phase 4 -->
+                    <div class="process-card bg-white rounded-2xl p-8 shadow-sm border border-gray-100 fade-in-up hover:shadow-xl transition-shadow"
+                        style="animation-delay: 0.3s;">
+                        <div class="phase-icon-box">
+                            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
+                            </svg>
+                        </div>
+                        <h3 class="font-poppins font-bold text-2xl text-[#1C2A39] mb-3">4. Exit / Optimise</h3>
+                        <p class="text-gray-600 mb-4">Remortgage support, hold reporting, and execution of sale.</p>
+                        <ul class="text-sm text-gray-500 space-y-2">
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> BRR strategy
+                                support</li>
+                            <li class="flex items-center"><span class="text-[#C0A060] mr-2">✓</span> Portfolio
+                                maximization</li>
+                        </ul>
+                    </div>
+                    <h2 class="font-poppins font-bold text-3xl md:text-5xl text-[#1C2A39] mb-4">Investment Packages</h2>
+                    <p class="text-lg text-gray-600">Transparent pricing. No hidden mark-ups. Contractor invoices passed
+                        at cost.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+                    <!-- Package 1 -->
+                    <div class="package-card bg-white rounded-2xl p-8 flex flex-col fade-in-up hover:-translate-y-2">
+                        <h3 class="font-poppins font-bold text-2xl text-[#1C2A39] mb-2">Package 1</h3>
+                        <h4 class="text-[#C0A060] font-bold mb-4">Acquisition Partner</h4>
+                        <p class="text-gray-500 text-sm mb-6 pb-6 border-b border-gray-100 flex-grow">Best for cash
+                            buyers and experienced renovators who need local deal access.</p>
+
+                        <div class="mb-8">
+                            <span class="text-3xl font-bold text-[#1C2A39]">2.5%</span><span class="text-gray-500">
+                                purchase fee</span>
+                            <p class="text-xs text-gray-400 mt-1">(Min £12,500)</p>
+                        </div>
+
+                        <ul class="text-sm text-gray-600 space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Off-market sourcing
+                            </li>
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Aggressive
+                                negotiation</li>
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> DD coordination</li>
+                        </ul>
+
+                        <a href="#investor-form" onclick="document.getElementById('strategy').value='Package 1'"
+                            class="w-full block bg-white border-2 border-[#1C2A39] text-[#1C2A39] text-center font-bold py-3 rounded-xl hover:bg-[#1C2A39] hover:text-white transition-colors">Select
+                            Package 1</a>
+                    </div>
+
+                    <!-- Package 2 (Recommended) -->
+                    <div class="package-card recommended bg-[#1C2A39] text-white rounded-2xl p-8 flex flex-col fade-in-up"
+                        style="animation-delay: 0.1s;">
+                        <div class="absolute top-0 right-8 transform -translate-y-1/2">
+                            <span
+                                class="bg-[#C0A060] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">Highly
+                                Recommended</span>
+                        </div>
+                        <h3 class="font-poppins font-bold text-2xl text-white mb-2">Package 2</h3>
+                        <h4 class="text-[#C0A060] font-bold mb-4">Turnkey Refurb + Let</h4>
+                        <p class="text-gray-300 text-sm mb-6 pb-6 border-b border-white/10 flex-grow">Best for overseas
+                            and hands-off investors wanting a complete solution.</p>
+
+                        <div class="mb-8">
+                            <div class="font-bold text-white mb-1"><span class="text-[#C0A060]">P1</span> + 12% <span
+                                    class="text-sm font-normal text-gray-400">refurb</span></div>
+                            <div class="font-bold text-white mb-1">+ 10% <span
+                                    class="text-sm font-normal text-gray-400">rent management</span></div>
+                        </div>
+
+                        <ul class="text-sm text-gray-300 space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Everything in
+                                Package 1</li>
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Full refurb
+                                management</li>
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Lettings setup & ops
+                            </li>
+                        </ul>
+
+                        <a href="#investor-form" onclick="document.getElementById('strategy').value='Package 2'"
+                            class="w-full block bg-[#C0A060] text-white text-center font-bold py-3 rounded-xl hover:bg-[#A08850] transition-colors shadow-lg">Select
+                            Package 2</a>
+                    </div>
+
+                    <!-- Package 3 -->
+                    <div class="package-card bg-white rounded-2xl p-8 flex flex-col fade-in-up hover:-translate-y-2"
+                        style="animation-delay: 0.2s;">
+                        <h3 class="font-poppins font-bold text-2xl text-[#1C2A39] mb-2">Package 3</h3>
+                        <h4 class="text-[#C0A060] font-bold mb-4">Portfolio + Exit</h4>
+                        <p class="text-gray-500 text-sm mb-6 pb-6 border-b border-gray-100 flex-grow">Best for active
+                            portfolio builders deploying BRR strategies.</p>
+
+                        <div class="mb-8">
+                            <div class="font-bold text-[#1C2A39] mb-1"><span class="text-[#C0A060]">P2</span> + 12%
+                                <span class="text-sm font-normal text-gray-500">rent</span>
+                            </div>
+                            <div class="font-bold text-[#1C2A39] mb-1">+ 1.5% <span
+                                    class="text-sm font-normal text-gray-500">exit fee</span></div>
+                        </div>
+
+                        <ul class="text-sm text-gray-600 space-y-3 mb-8 flex-grow">
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Everything in
+                                Package 2</li>
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Quarterly portfolio
+                                reporting</li>
+                            <li class="flex items-start"><span class="text-[#C0A060] mr-2">✓</span> Remortgage & exit
+                                support</li>
+                        </ul>
+
+                        <a href="#investor-form" onclick="document.getElementById('strategy').value='Package 3'"
+                            class="w-full block bg-white border-2 border-[#1C2A39] text-[#1C2A39] text-center font-bold py-3 rounded-xl hover:bg-[#1C2A39] hover:text-white transition-colors">Select
+                            Package 3</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6-Step Process -->
+        <section class="py-20 md:py-28 bg-[#1C2A39] text-white overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-20 fade-in-up">
+                    <h2 class="font-poppins font-bold text-3xl md:text-5xl text-white mb-4">How We Execute</h2>
+                    <p class="text-lg text-gray-300">A systematic, 6-step operation from brief to yield.</p>
+                </div>
+
+                <div class="step-timeline">
+                    <!-- Step 1 -->
+                    <div class="step-item mb-10 lg:mb-0 fade-in-up">
+                        <div
+                            class="step-number w-12 h-12 bg-[#C0A060] rounded-full flex items-center justify-center font-bold text-xl shadow-[0_0_0_4px_#1C2A39,0_0_0_6px_#C0A060]">
+                            1</div>
+                        <h4 class="font-bold text-lg mb-2">Investor Brief</h4>
+                        <p class="text-sm text-gray-400">Aligning strategy, budget, and target yields.</p>
+                    </div>
+                    <!-- Step 2 -->
+                    <div class="step-item mb-10 lg:mb-0 fade-in-up" style="animation-delay: 0.1s;">
+                        <div
+                            class="step-number w-12 h-12 bg-[#1C2A39] border-2 border-[#C0A060] text-[#C0A060] rounded-full flex items-center justify-center font-bold text-xl">
+                            2</div>
+                        <h4 class="font-bold text-lg mb-2">Deal Sourcing</h4>
+                        <p class="text-sm text-gray-400">Finding the signal in the off-market noise.</p>
+                    </div>
+                    <!-- Step 3 -->
+                    <div class="step-item mb-10 lg:mb-0 fade-in-up" style="animation-delay: 0.2s;">
+                        <div
+                            class="step-number w-12 h-12 bg-[#1C2A39] border-2 border-[#C0A060] text-[#C0A060] rounded-full flex items-center justify-center font-bold text-xl">
+                            3</div>
+                        <h4 class="font-bold text-lg mb-2">Offer & DD</h4>
+                        <p class="text-sm text-gray-400">Aggressive negotiation and compliance checks.</p>
+                    </div>
+                    <!-- Step 4 -->
+                    <div class="step-item mb-10 lg:mb-0 fade-in-up" style="animation-delay: 0.3s;">
+                        <div
+                            class="step-number w-12 h-12 bg-[#1C2A39] border-2 border-[#C0A060] text-[#C0A060] rounded-full flex items-center justify-center font-bold text-xl">
+                            4</div>
+                        <h4 class="font-bold text-lg mb-2">Complete</h4>
+                        <p class="text-sm text-gray-400">Legal coordination to secure the asset.</p>
+                    </div>
+                    <!-- Step 5 -->
+                    <div class="step-item mb-10 lg:mb-0 fade-in-up" style="animation-delay: 0.4s;">
+                        <div
+                            class="step-number w-12 h-12 bg-[#1C2A39] border-2 border-[#C0A060] text-[#C0A060] rounded-full flex items-center justify-center font-bold text-xl">
+                            5</div>
+                        <h4 class="font-bold text-lg mb-2">Refurb</h4>
+                        <p class="text-sm text-gray-400">On-time, on-budget project delivery.</p>
+                    </div>
+                    <!-- Step 6 -->
+                    <div class="step-item fade-in-up" style="animation-delay: 0.5s;">
+                        <div
+                            class="step-number w-12 h-12 bg-[#C0A060] rounded-full flex items-center justify-center font-bold text-xl shadow-[0_0_0_4px_#1C2A39,0_0_0_6px_#C0A060]">
+                            6</div>
+                        <h4 class="font-bold text-lg mb-2">Let / Exit</h4>
+                        <p class="text-sm text-gray-400">Tenant placement or strategic sale execution.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Investor Interest Form -->
+        <section id="investor-form" class="py-20 md:py-28 bg-[#F7F7F7]">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12 fade-in-up">
+                    <h2 class="font-poppins font-bold text-3xl md:text-5xl text-[#1C2A39] mb-4">Send Your Brief</h2>
+                    <p class="text-lg text-gray-600">Fill out your investment criteria below and Andrei will review your
+                        brief personally.</p>
+                </div>
+
+                <div class="bg-white rounded-3xl p-8 md:p-12 shadow-xl border border-gray-100 fade-in-up">
+                    <form id="investor-contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Name -->
+                            <div>
+                                <label for="fullName" class="block text-sm font-medium text-gray-700 mb-2">Full Name
+                                    *</label>
+                                <input type="text" id="fullName" name="fullName" required
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                            </div>
+
+                            <!-- Phone -->
+                            <div>
+                                <label for="phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number
+                                    *</label>
+                                <input type="tel" id="phone" name="phone" required
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                            </div>
+                        </div>
+
+                        <!-- Email -->
+                        <div>
+                            <label for="email" class="block text-sm font-medium text-gray-700 mb-2">Email Address
+                                *</label>
+                            <input type="email" id="email" name="email" required
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Budget -->
+                            <div>
+                                <label for="budget" class="block text-sm font-medium text-gray-700 mb-2">Investment
+                                    Budget (£)</label>
+                                <select id="budget" name="budget"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                                    <option value="">Please select...</option>
+                                    <option value="Under £250k">Under £250,000</option>
+                                    <option value="£250k - £500k">£250,000 - £500,000</option>
+                                    <option value="£500k - £1M">£500,000 - £1,000,000</option>
+                                    <option value="£1M+">£1,000,000+</option>
+                                </select>
+                            </div>
+
+                            <!-- Timeline -->
+                            <div>
+                                <label for="timeline"
+                                    class="block text-sm font-medium text-gray-700 mb-2">Implementation Timeline</label>
+                                <select id="timeline" name="timeline"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                                    <option value="">Please select...</option>
+                                    <option value="ASAP">Ready to deploy ASAP</option>
+                                    <option value="Within 3 Months">Within 3 Months</option>
+                                    <option value="3-6 Months">3-6 Months</option>
+                                    <option value="6+ Months">6+ Months / Researching</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <!-- Target Area -->
+                            <div>
+                                <label for="targetArea" class="block text-sm font-medium text-gray-700 mb-2">Target Area
+                                    (E.g. London, M25)</label>
+                                <input type="text" id="targetArea" name="targetArea"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                            </div>
+
+                            <!-- Target Yield -->
+                            <div>
+                                <label for="targetYield" class="block text-sm font-medium text-gray-700 mb-2">Target
+                                    Yield (%)</label>
+                                <input type="text" id="targetYield" name="targetYield" placeholder="e.g. 6-8%"
+                                    class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                            </div>
+                        </div>
+
+                        <!-- Strategy -->
+                        <div>
+                            <label for="strategy" class="block text-sm font-medium text-gray-700 mb-2">Which Strategy /
+                                Package interests you most?</label>
+                            <select id="strategy" name="strategy"
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50">
+                                <option value="">Please select...</option>
+                                <option value="Package 1">Package 1 - Acquisition Partner</option>
+                                <option value="Package 2">Package 2 - Turnkey Refurb + Let</option>
+                                <option value="Package 3">Package 3 - Portfolio + Exit</option>
+                                <option value="Flip">Flipping</option>
+                                <option value="BRR">Buy, Refurbish, Refinance (BRR)</option>
+                                <option value="Undecided">Undecided / Need Advice</option>
+                            </select>
+                        </div>
+
+                        <!-- Notes -->
+                        <div>
+                            <label for="notes" class="block text-sm font-medium text-gray-700 mb-2">Additional Notes /
+                                Criteria</label>
+                            <textarea id="notes" name="notes" rows="4"
+                                class="w-full px-4 py-3 rounded-xl border border-gray-200 focus:border-[#C0A060] focus:ring-2 focus:ring-[#C0A060]/20 outline-none transition-all bg-gray-50 resize-none"></textarea>
+                        </div>
+
+                        <!-- Message Box for feedback -->
+                        <div id="form-message" class="hidden rounded-lg p-4 mt-4 font-medium"></div>
+
+                        <button type="submit"
+                            class="w-full bg-[#1C2A39] text-white font-bold py-4 rounded-xl hover:bg-[#2F3A4A] transition-colors shadow-lg hover:shadow-xl group flex items-center justify-center">
+                            Send
+                            <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Load Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Scripts -->
+    <script src="/assets/scripts/main.js"></script>
+
+    <script>
+        // Setup simple app initialization specific to this new page
+        document.addEventListener('DOMContentLoaded', () => {
+            // Load Navbar
+            fetch('/partials/navbar.html?v=4')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('navbar-container').innerHTML = data;
+                    if (typeof initNavbar === 'function') initNavbar();
+                });
+
+            // Load Footer
+            fetch('/partials/footer.html?v=5')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('footer-container').innerHTML = data;
+                });
+
+            // Setup intersection observer for animations
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('fade-in-up-active');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            document.querySelectorAll('.fade-in-up').forEach(el => {
+                observer.observe(el);
+            });
+
+            // Simple form handling
+            const form = document.getElementById('investor-contact-form');
+            if (form) {
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    const submitBtn = form.querySelector('button[type="submit"]');
+                    const msgBox = document.getElementById('form-message');
+
+                    submitBtn.innerHTML = 'Sending...';
+                    submitBtn.disabled = true;
+
+                    // Simulate API call
+                    setTimeout(() => {
+                        msgBox.innerHTML = '✅ Brief sent successfully! Andrei will be in touch shortly.';
+                        msgBox.className = 'rounded-lg p-4 mt-4 font-medium bg-green-50 text-green-800 border-l-4 border-green-500';
+                        msgBox.classList.remove('hidden');
+                        form.reset();
+                        submitBtn.innerHTML = 'Send';
+                        submitBtn.disabled = false;
+
+                        setTimeout(() => {
+                            msgBox.classList.add('hidden');
+                        }, 5000);
+                    }, 1500);
+                });
+            }
+        });
+    </script>
+</body>
+
+</html>

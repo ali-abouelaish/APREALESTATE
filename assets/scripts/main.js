@@ -43,7 +43,7 @@ function initNavbar() {
 
   // Add scroll listener
   window.addEventListener('scroll', handleScroll);
-  
+
   // Set active page
   setActivePage();
 }
@@ -55,36 +55,36 @@ function initNavbar() {
 function setActivePage() {
   const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('.nav-link');
-  
+
   navLinks.forEach(link => {
     const linkPath = new URL(link.href).pathname;
-    
+
     // Remove active class from all links
     link.classList.remove('text-[#C0A060]', 'font-semibold');
     link.classList.add('text-white');
-    
+
     // Add active class to current page
-    if (linkPath === currentPath || 
-        (currentPath === '/' && linkPath === '/index.html') ||
-        (currentPath === '/index.html' && linkPath === '/index.html')) {
+    if (linkPath === currentPath ||
+      (currentPath === '/' && linkPath === '/index.html') ||
+      (currentPath === '/index.html' && linkPath === '/index.html')) {
       link.classList.remove('text-white');
       link.classList.add('text-[#C0A060]', 'font-semibold');
     }
   });
-  
+
   // Also handle mobile menu links
   const mobileLinks = document.querySelectorAll('#mobile-menu a');
   mobileLinks.forEach(link => {
     const linkPath = new URL(link.href).pathname;
-    
+
     // Remove active class from all mobile links
     link.classList.remove('text-[#C0A060]', 'font-semibold');
     link.classList.add('text-[#1F2937]');
-    
+
     // Add active class to current page
-    if (linkPath === currentPath || 
-        (currentPath === '/' && linkPath === '/index.html') ||
-        (currentPath === '/index.html' && linkPath === '/index.html')) {
+    if (linkPath === currentPath ||
+      (currentPath === '/' && linkPath === '/index.html') ||
+      (currentPath === '/index.html' && linkPath === '/index.html')) {
       link.classList.remove('text-[#1F2937]');
       link.classList.add('text-[#C0A060]', 'font-semibold');
     }
@@ -98,7 +98,7 @@ function setActivePage() {
 function initMobileMenu() {
   const menuBtn = document.getElementById('mobile-menu-btn');
   const mobileMenu = document.getElementById('mobile-menu');
-  
+
   if (!menuBtn || !mobileMenu) {
     console.log('Mobile menu elements not found, skipping init');
     return;
@@ -120,7 +120,7 @@ function initMobileMenu() {
 
   // Ensure menu is closed initially
   mobileMenu.classList.add('translate-x-full');
-  
+
   let isOpen = false;
   let isAnimating = false; // Prevent rapid toggling
 
@@ -128,16 +128,16 @@ function initMobileMenu() {
     if (isAnimating) return;
     isAnimating = true;
     isOpen = true;
-    
+
     mobileMenu.classList.remove('translate-x-full');
     menuOpenIcon.classList.add('hidden');
     menuCloseIcon.classList.remove('hidden');
-    
+
     // Prevent body scroll
     document.body.style.overflow = 'hidden';
     document.body.classList.add('menu-open');
     menuBtn.setAttribute('aria-expanded', 'true');
-    
+
     setTimeout(() => { isAnimating = false; }, 300);
   };
 
@@ -145,16 +145,16 @@ function initMobileMenu() {
     if (isAnimating) return;
     isAnimating = true;
     isOpen = false;
-    
+
     mobileMenu.classList.add('translate-x-full');
     menuOpenIcon.classList.remove('hidden');
     menuCloseIcon.classList.add('hidden');
-    
+
     // Restore body scroll
     document.body.style.overflow = '';
     document.body.classList.remove('menu-open');
     menuBtn.setAttribute('aria-expanded', 'false');
-    
+
     setTimeout(() => { isAnimating = false; }, 300);
   };
 
@@ -171,18 +171,18 @@ function initMobileMenu() {
   const handleToggle = (e) => {
     e.preventDefault();
     e.stopPropagation();
-    
+
     // Debounce: prevent double-firing within 300ms
     const now = Date.now();
     if (now - lastToggleTime < 300) return;
     lastToggleTime = now;
-    
+
     toggleMenu();
   };
 
   // Use pointer events for unified touch/mouse handling
   menuBtn.addEventListener('pointerup', handleToggle, { passive: false });
-  
+
   // Fallback for older browsers
   menuBtn.addEventListener('click', (e) => {
     // Only use click if pointerup didn't fire
@@ -215,13 +215,13 @@ function initSmoothScroll() {
     anchor.addEventListener('click', function (e) {
       const href = this.getAttribute('href');
       if (href === '#' || href === '#main-content') return;
-      
+
       const target = document.querySelector(href);
       if (target) {
         e.preventDefault();
         const offset = 80; // Account for fixed navbar
         const targetPosition = target.offsetTop - offset;
-        
+
         window.scrollTo({
           top: targetPosition,
           behavior: 'smooth'
@@ -303,7 +303,7 @@ function initCounters() {
         observer.unobserve(entry.target);
       }
     });
-  }, { threshold: 0.5 });
+  }, { threshold: 0.2 });
 
   counterElements.forEach(el => observer.observe(el));
 }
@@ -316,14 +316,14 @@ function initParallax() {
   if (prefersReducedMotion) return;
 
   const parallaxElements = document.querySelectorAll('[data-parallax]');
-  
+
   const handleParallax = () => {
     parallaxElements.forEach(element => {
       const speed = parseFloat(element.getAttribute('data-parallax')) || 0.5;
       const rect = element.getBoundingClientRect();
       const scrolled = window.pageYOffset;
       const rate = scrolled * speed;
-      
+
       if (rect.top < window.innerHeight && rect.bottom > 0) {
         element.style.transform = `translate3d(0, ${rate}px, 0)`;
       }
@@ -340,13 +340,13 @@ function initParallax() {
 
 function initAccordion() {
   const accordionButtons = document.querySelectorAll('.accordion-button');
-  
+
   accordionButtons.forEach(button => {
     button.addEventListener('click', () => {
       const content = button.nextElementSibling;
       const icon = button.querySelector('.accordion-icon');
       const isOpen = content.classList.contains('accordion-open');
-      
+
       // Close all other accordions in the same group
       const accordionGroup = button.closest('.accordion-group');
       if (accordionGroup) {
@@ -362,7 +362,7 @@ function initAccordion() {
           }
         });
       }
-      
+
       // Toggle current accordion
       if (isOpen) {
         content.classList.remove('accordion-open');
@@ -385,10 +385,10 @@ function initAccordion() {
 function collectFormData(form) {
   const formFields = {};
   const formType = detectFormType(form);
-  
+
   // Get all input, select, and textarea elements
   const inputs = form.querySelectorAll('input, select, textarea');
-  
+
   inputs.forEach(input => {
     if (input.type === 'checkbox' || input.type === 'radio') {
       if (input.checked) {
@@ -404,7 +404,7 @@ function collectFormData(form) {
       }
     }
   });
-  
+
   // Map different field IDs to standard names for PHP handler
   const fieldMapping = {
     // Contact form fields
@@ -415,34 +415,34 @@ function collectFormData(form) {
     'enquiry-type': form.querySelector('#enquiry-type')?.value || formType,
     'message': form.querySelector('#contact-message')?.value || form.querySelector('#message')?.value || form.querySelector('#v-message')?.value || form.querySelector('#issue-description')?.value || '',
     'gdpr': form.querySelector('#contact-gdpr')?.checked || form.querySelector('#gdpr')?.checked || form.querySelector('#v-gdpr')?.checked || false,
-    
+
     // Index page valuation form
     'name': form.querySelector('#name')?.value || '',
     'property': form.querySelector('#property')?.value || form.querySelector('#address')?.value || form.querySelector('#property-address')?.value || '',
-    
+
     // Landlords form fields
     'fname': form.querySelector('#fname')?.value || '',
     'lname': form.querySelector('#lname')?.value || '',
     'bedrooms': form.querySelector('#bedrooms')?.value || '',
     'property-type': form.querySelector('#property-type')?.value || '',
     'payment-option': form.querySelector('#payment-option')?.value || '',
-    
+
     // Maintenance form fields
     'tenant-name': form.querySelector('#tenant-name')?.value || '',
     'issue-type': form.querySelector('#issue-type')?.value || '',
     'contact-time': form.querySelector('input[name="contact-time"]:checked')?.value || ''
   };
-  
+
   // Merge mapped fields, prioritizing actual form values
   Object.keys(fieldMapping).forEach(key => {
     if (fieldMapping[key] !== '' && fieldMapping[key] !== false) {
       formFields[key] = fieldMapping[key];
     }
   });
-  
+
   // Add form type for PHP handler
   formFields['form-type'] = formType;
-  
+
   return formFields;
 }
 
@@ -453,25 +453,136 @@ function detectFormType(form) {
   if (form.querySelector('#bedrooms')) return 'valuation';
   if (form.querySelector('#enquiry-type')) return 'contact';
   if (form.querySelector('#name') && !form.querySelector('#first-name')) return 'valuation';
-  
+
   // Default to contact
   return 'contact';
 }
 
+// 📂 MOBILE ACCORDIONS
+function initMobileAccordions() {
+  const headers = document.querySelectorAll('.mobile-accordion-header');
+  headers.forEach(header => {
+    header.addEventListener('click', () => {
+      const content = header.nextElementSibling;
+      const isOpen = content.classList.contains('open');
+
+      // Optional: Close others in same group
+      const group = header.closest('.mobile-accordion-group');
+      if (group) {
+        group.querySelectorAll('.mobile-accordion-content').forEach(c => {
+          c.classList.remove('open');
+          c.previousElementSibling.classList.remove('active');
+          c.previousElementSibling.querySelector('svg')?.classList.remove('rotate-180');
+        });
+      }
+
+      if (!isOpen) {
+        content.classList.add('open');
+        header.classList.add('active');
+        header.querySelector('svg')?.classList.add('rotate-180');
+      } else {
+        content.classList.remove('open');
+        header.classList.remove('active');
+        header.querySelector('svg')?.classList.remove('rotate-180');
+      }
+    });
+  });
+}
+
+// ⚡️ TWO-STEP FORMS
+function initMultiStepForms() {
+  const multiStepForms = document.querySelectorAll('.multi-step-form');
+
+  multiStepForms.forEach(form => {
+    const steps = form.querySelectorAll('.form-step');
+    const nextBtns = form.querySelectorAll('.next-step');
+    const dots = form.querySelectorAll('.step-dot');
+    let currentStep = 0;
+
+    nextBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Basic validation for current step
+        const currentFields = steps[currentStep].querySelectorAll('[required]');
+        let valid = true;
+        currentFields.forEach(f => {
+          if (!f.value.trim()) {
+            valid = false;
+            f.classList.add('border-red-500');
+          } else {
+            f.classList.remove('border-red-500');
+          }
+        });
+
+        if (valid && currentStep < steps.length - 1) {
+          steps[currentStep].classList.remove('active');
+          currentStep++;
+          steps[currentStep].classList.add('active');
+
+          if (dots[currentStep]) {
+            dots[currentStep].classList.add('active');
+          }
+        }
+      });
+    });
+  });
+}
+
+// 📱 LOAD MOBILE CTA
+function loadMobileCTA() {
+  const container = document.getElementById('mobile-cta-container');
+  if (!container) return;
+
+  fetch('./partials/mobile-cta.html?v=4')
+    .then(response => response.text())
+    .then(data => {
+      container.innerHTML = data;
+      const cta = document.getElementById('sticky-mobile-cta');
+      if (cta) {
+        cta.classList.remove('hidden');
+
+        // Show/hide on scroll
+        let lastScroll = 0;
+        window.addEventListener('scroll', throttle(() => {
+          const currentScroll = window.scrollY;
+          if (currentScroll > 300 && currentScroll > lastScroll) {
+            cta.style.transform = 'translateY(150%)';
+          } else {
+            cta.style.transform = 'translateY(0)';
+          }
+          lastScroll = currentScroll;
+        }, 200));
+      }
+    });
+}
+
+// Helper throttle
+function throttle(func, limit) {
+  let inThrottle;
+  return function () {
+    const args = arguments;
+    const context = this;
+    if (!inThrottle) {
+      func.apply(context, args);
+      inThrottle = true;
+      setTimeout(() => inThrottle = false, limit);
+    }
+  }
+}
+
 function initFormValidation() {
   const forms = document.querySelectorAll('.validate-form');
-  
+
   forms.forEach(form => {
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       let isValid = true;
-      
+
       // Clear previous errors
       form.querySelectorAll('.error-message').forEach(msg => msg.remove());
       form.querySelectorAll('.border-red-500').forEach(input => {
         input.classList.remove('border-red-500');
       });
-      
+
       // Validate required fields
       const requiredFields = form.querySelectorAll('[required]');
       requiredFields.forEach(field => {
@@ -480,7 +591,7 @@ function initFormValidation() {
           showError(field, 'This field is required');
         }
       });
-      
+
       // Validate email
       const emailFields = form.querySelectorAll('input[type="email"]');
       emailFields.forEach(field => {
@@ -489,7 +600,7 @@ function initFormValidation() {
           showError(field, 'Please enter a valid email address');
         }
       });
-      
+
       // Validate phone
       const phoneFields = form.querySelectorAll('input[type="tel"]');
       phoneFields.forEach(field => {
@@ -498,17 +609,17 @@ function initFormValidation() {
           showError(field, 'Please enter a valid phone number');
         }
       });
-      
+
       if (isValid) {
         // Collect form data dynamically from all input fields
         const formFields = collectFormData(form);
-        
+
         // Show loading state
         const submitButton = form.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.innerHTML;
         submitButton.disabled = true;
         submitButton.innerHTML = 'Sending...';
-        
+
         // Send form data to PHP handler
         fetch('/contact-form-handler.php', {
           method: 'POST',
@@ -517,23 +628,23 @@ function initFormValidation() {
           },
           body: new URLSearchParams(formFields)
         })
-        .then(response => response.json())
-        .then(data => {
-          if (data.success) {
-            showSuccessMessage(form);
-            form.reset();
-          } else {
-            showErrorMessage(form, data.message || 'An error occurred. Please try again.');
-          }
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          showErrorMessage(form, 'Network error. Please check your connection and try again.');
-        })
-        .finally(() => {
-          submitButton.disabled = false;
-          submitButton.innerHTML = originalButtonText;
-        });
+          .then(response => response.json())
+          .then(data => {
+            if (data.success) {
+              showSuccessMessage(form);
+              form.reset();
+            } else {
+              showErrorMessage(form, data.message || 'An error occurred. Please try again.');
+            }
+          })
+          .catch(error => {
+            console.error('Error:', error);
+            showErrorMessage(form, 'Network error. Please check your connection and try again.');
+          })
+          .finally(() => {
+            submitButton.disabled = false;
+            submitButton.innerHTML = originalButtonText;
+          });
       }
     });
   });
@@ -550,7 +661,7 @@ function showError(field, message) {
 function showSuccessMessage(form) {
   // Remove any existing messages
   form.querySelectorAll('.form-message').forEach(msg => msg.remove());
-  
+
   const successDiv = document.createElement('div');
   successDiv.className = 'form-message bg-green-50 border border-green-200 text-green-700 px-4 py-3 rounded-lg mb-4';
   successDiv.innerHTML = `
@@ -562,7 +673,7 @@ function showSuccessMessage(form) {
     </div>
   `;
   form.insertBefore(successDiv, form.firstChild);
-  
+
   setTimeout(() => {
     successDiv.remove();
   }, 5000);
@@ -571,7 +682,7 @@ function showSuccessMessage(form) {
 function showErrorMessage(form, message) {
   // Remove any existing messages
   form.querySelectorAll('.form-message').forEach(msg => msg.remove());
-  
+
   const errorDiv = document.createElement('div');
   errorDiv.className = 'form-message bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg mb-4';
   errorDiv.innerHTML = `
@@ -583,7 +694,7 @@ function showErrorMessage(form, message) {
     </div>
   `;
   form.insertBefore(errorDiv, form.firstChild);
-  
+
   setTimeout(() => {
     errorDiv.remove();
   }, 5000);
@@ -643,7 +754,7 @@ function initTestimonialSlider() {
 
 function initLazyLoading() {
   const images = document.querySelectorAll('img[data-src]');
-  
+
   const imageObserver = new IntersectionObserver((entries, observer) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
@@ -750,13 +861,16 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollToTop();
   initCookieConsent();
   initVideoBackground();
-  
+  initMobileAccordions();
+  initMultiStepForms();
+  loadMobileCTA();
+
   // Try to initialize mobile menu if navbar is already loaded
   if (document.getElementById('mobile-menu-btn')) {
     console.log('Mobile menu button found on DOMContentLoaded, initializing...');
     initMobileMenu();
   }
-  
+
   // Add loaded class to body for CSS animations
   document.body.classList.add('loaded');
 });
@@ -793,7 +907,7 @@ if ('PerformanceObserver' in window) {
       }
     }
   });
-  
+
   observer.observe({ entryTypes: ['largest-contentful-paint'] });
 }
 

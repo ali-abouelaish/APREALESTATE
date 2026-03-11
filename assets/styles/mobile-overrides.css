@@ -36,17 +36,24 @@
    ======================================== */
 @media screen and (max-width: 1023px) {
 
-  /* 🛠 CORE LAYOUT - LIGHTWEIGHT MOBILE BACKGROUND */
+  /* 🛠 CORE LAYOUT - MOBILE BACKGROUND */
   body {
-    /* Simple gradient background - NO heavy patterns */
-    background: linear-gradient(180deg, #FDFCFB 0%, #F5F4F2 50%, #FAFAF8 100%) !important;
-    background-attachment: scroll !important;
+    background-image: url('/assets/images/placeholders/mobile%20bg.png') !important;
+    background-attachment: fixed !important;
+    background-position: center center !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
+    background-color: #FDFCFB !important;
     overflow-x: hidden !important;
+    min-height: 100vh;
   }
 
-  /* Override inline SVG background */
+  /* Override inline desktop background on mobile */
   body[style*="bgmain.svg"] {
-    background: linear-gradient(180deg, #FDFCFB 0%, #F5F4F2 50%, #FAFAF8 100%) !important;
+    background-image: url('/assets/images/placeholders/mobile%20bg.png') !important;
+    background-attachment: fixed !important;
+    background-size: 100% 100% !important;
+    background-repeat: no-repeat !important;
   }
 
   /* PERFORMANCE: Disable blur filters on mobile */
@@ -355,5 +362,143 @@
   .mobile-snap-scroll {
     -webkit-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+  }
+  /* 📱 STICKY MOBILE CTA BAR */
+  #sticky-mobile-cta {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(28, 42, 57, 0.95);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-around;
+    padding: 0.5rem 0.75rem;
+    z-index: 9999;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+  }
+
+  .cta-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    color: white;
+    text-decoration: none;
+    flex: 1;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .cta-item span {
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    opacity: 0.8;
+  }
+
+  .cta-item .icon-bg {
+    width: 2.25rem;
+    height: 2.25rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s ease;
+  }
+
+  .cta-item.whatsapp .icon-bg {
+    background: rgba(37, 211, 102, 0.2);
+    color: #25D366;
+  }
+
+  .cta-item.primary .icon-bg {
+    background: #C0A060;
+    color: white;
+  }
+
+  /* 📂 MOBILE ACCORDIONS */
+  .mobile-accordion-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem;
+    background: white;
+    border-radius: 1rem;
+    border: 1px solid #E2E8F0;
+    margin-bottom: 0.75rem;
+    cursor: pointer;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  .mobile-accordion-header.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    margin-bottom: 0;
+    background: #F8FAFC;
+  }
+
+  .mobile-accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out, padding 0.3s ease;
+    background: white;
+    border: 1px solid #E2E8F0;
+    border-top: none;
+    border-bottom-left-radius: 1rem;
+    border-bottom-right-radius: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .mobile-accordion-content.open {
+    padding: 1rem 1.25rem;
+    max-height: 1000px;
+    margin-bottom: 1.25rem;
+  }
+
+  /* ⚡️ TWO-STEP FORMS */
+  .form-step {
+    display: none;
+    animation: fadeIn 0.3s ease;
+  }
+
+  .form-step.active {
+    display: block;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .step-indicator {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .step-dot {
+    height: 4px;
+    flex: 1;
+    background: #E2E8F0;
+    border-radius: 2px;
+    transition: background 0.3s ease;
+  }
+
+  .step-dot.active {
+    background: #C0A060;
+  }
+
+}
+
+/* Desktop Hide */
+@media screen and (min-width: 1024px) {
+  #sticky-mobile-cta {
+    display: none !important;
   }
 }

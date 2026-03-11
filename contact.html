@@ -16,7 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="/assets/styles/custom.css">
-  <link rel="stylesheet" href="/assets/styles/mobile-overrides.css">
+  <link rel="stylesheet" href="/assets/styles/mobile-overrides.css?v=7">
 </head>
 
 <body class="antialiased"
@@ -82,8 +82,8 @@
               </div>
               <h3 class="font-poppins font-semibold text-xl text-[#1C2A39] mb-3">Email Us</h3>
               <p class="text-gray-600 mb-3">We'll respond within<br>24 hours</p>
-              <a href="mailto:info@ap-propertygroup.co.uk"
-                class="text-[#C0A060] font-semibold text-lg hover:underline">info@ap-propertygroup.co.uk</a>
+              <a href="mailto:info@aprealestate.co.uk"
+                class="text-[#C0A060] font-semibold text-lg hover:underline">info@aprealestate.co.uk</a>
             </div>
 
             <div class="text-center fade-in-up" style="animation-delay: 0.2s;">
@@ -214,7 +214,7 @@
               <p class="text-sm text-[#C0A060] font-semibold">+44 20 3397 3845</p>
             </div>
           </a>
-          <a href="mailto:info@ap-propertygroup.co.uk"
+          <a href="mailto:info@aprealestate.co.uk"
             class="bg-white rounded-xl p-6 shadow-sm border border-gray-100 flex items-center gap-4">
             <div class="w-12 h-12 bg-[#C0A060]/10 rounded-xl flex items-center justify-center flex-shrink-0">
               <svg class="w-6 h-6 text-[#C0A060]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -225,7 +225,7 @@
             </div>
             <div class="text-left flex-grow">
               <h3 class="font-bold text-[#1C2A39] mb-1">Email Us</h3>
-              <p class="text-xs text-gray-600 break-all">info@ap-propertygroup.co.uk</p>
+              <p class="text-xs text-gray-600 break-all">info@aprealestate.co.uk</p>
             </div>
           </a>
           <a href="https://maps.google.com/maps?q=154+Bishopsgate,+London" target="_blank"
@@ -284,7 +284,7 @@
   <!-- Load Partials -->
   <script>
     // Load navbar
-    fetch('/partials/navbar.html')
+    fetch('/partials/navbar.html?v=4')
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-container').innerHTML = data;
@@ -294,7 +294,7 @@
       });
 
     // Load footer
-    fetch('/partials/footer.html')
+    fetch('/partials/footer.html?v=5')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-container').innerHTML = data;

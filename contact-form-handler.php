@@ -99,7 +99,7 @@ if (!empty($errors)) {
 
 // Email configuration
 // TODO: Update these with your actual email address
-$to = 'info@ap-propertygroup.co.uk'; // Your email address
+$to = 'info@aprealestate.co.uk'; // Your email address
 
 // Build subject based on form type
 $subject = 'New ' . ucfirst($formType) . ' Form Submission - AP Real Estate Solutions';

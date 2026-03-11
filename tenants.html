@@ -15,8 +15,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="/assets/styles/custom.css">
-  <link rel="stylesheet" href="/assets/styles/mobile-overrides.css">
+  <link rel="stylesheet" href="./assets/styles/custom.css">
+  <link rel="stylesheet" href="./assets/styles/mobile-overrides.css?v=7">
 </head>
 
 <body class="antialiased"
@@ -37,7 +37,7 @@
             class="inline-block px-3 py-1 bg-[#C0A060] text-white text-xs font-bold uppercase tracking-wider rounded-full mb-3">Tenants</span>
           <h1 class="text-3xl font-bold text-white mb-2 leading-tight font-poppins">Find Your<br>Perfect Home.</h1>
           <p class="text-gray-200 text-sm mb-4">Quality rentals. Professional support. Zero stress.</p>
-          <a href="/contact.html"
+          <a href="https://www.zoopla.co.uk/to-rent/property/uk/?branch_id=164100&include_sold=true&include_rented=true"
             class="w-full block bg-white text-[#1C2A39] text-center font-bold py-3 rounded-xl shadow-lg">Browse
             Properties</a>
         </div>
@@ -131,7 +131,7 @@
       <div class="px-6 py-12 bg-slate-50 text-center">
         <h2 class="text-2xl font-bold text-[#1C2A39] mb-4 font-poppins">Ready to Move?</h2>
         <p class="text-sm text-gray-600 mb-6">Start your search for the perfect property today.</p>
-        <a href="/contact.html"
+        <a href="https://www.zoopla.co.uk/to-rent/property/uk/?branch_id=164100&include_sold=true&include_rented=true"
           class="w-full block bg-[#C0A060] text-white font-bold py-4 rounded-xl shadow-lg mt-2">Register Interest</a>
       </div>
     </div>
@@ -149,7 +149,7 @@
             Perfect Home</h1>
           <p class="text-xl md:text-2xl text-gray-100 mb-8 max-w-3xl mx-auto fade-in-up drop-shadow-md">Quality rental
             properties across London with professional service and support at every step.</p>
-          <a href="/contact.html"
+          <a href="https://www.zoopla.co.uk/to-rent/property/uk/?branch_id=164100&include_sold=true&include_rented=true"
             class="inline-block btn-primary px-8 py-4 bg-[#C0A060] text-white rounded-lg font-semibold text-lg hover:bg-[#A08850] transform hover:scale-105 transition-all duration-300 shadow-xl fade-in-up">
             Browse Properties
           </a>
@@ -238,7 +238,7 @@
 
           <!-- See More CTA -->
           <div class="text-center mt-12 fade-in-up">
-            <a href="/contact.html"
+            <a href="https://www.zoopla.co.uk/to-rent/property/uk/?branch_id=164100&include_sold=true&include_rented=true"
               class="inline-block px-8 py-4 bg-[#C0A060] text-white rounded-lg font-semibold text-lg hover:bg-[#A08850] transform hover:scale-105 transition-all duration-300 shadow-lg">
               See More Properties
             </a>
@@ -470,7 +470,7 @@
         <div class="max-w-4xl mx-auto text-center px-4 sm:px-6 lg:px-8 fade-in-up">
           <h2 class="font-poppins font-bold text-4xl md:text-5xl mb-6">Ready to Find Your Home?</h2>
           <p class="text-xl text-gray-200 mb-8">Browse our available properties and start your application today</p>
-          <a href="/contact.html"
+          <a href="https://www.zoopla.co.uk/to-rent/property/uk/?branch_id=164100&include_sold=true&include_rented=true"
             class="inline-block btn-primary px-10 py-4 bg-[#C0A060] text-white rounded-lg font-semibold text-lg hover:bg-[#A08850] transform hover:scale-105 transition-all duration-300 shadow-xl">
             View Available Properties
           </a>
@@ -488,13 +488,16 @@
     </svg>
   </button>
 
+  <!-- Mobile Sticky CTA Container -->
+  <div id="mobile-cta-container"></div>
+
   <!-- Main JavaScript -->
-  <script src="/assets/scripts/main.js"></script>
+  <script src="./assets/scripts/main.js"></script>
 
   <!-- Load Partials -->
   <script>
     // Load navbar
-    fetch('/partials/navbar.html')
+    fetch('./partials/navbar.html?v=4')
       .then(response => response.text())
       .then(data => {
         document.getElementById('navbar-container').innerHTML = data;
@@ -504,7 +507,7 @@
       });
 
     // Load footer
-    fetch('/partials/footer.html')
+    fetch('./partials/footer.html?v=5')
       .then(response => response.text())
       .then(data => {
         document.getElementById('footer-container').innerHTML = data;

@@ -14,7 +14,7 @@ The contact form has been updated to work with a PHP backend. When you deploy to
 Open `contact-form-handler.php` and update line 60 with your actual email address:
 
 ```php
-$to = 'info@ap-propertygroup.co.uk'; // Change this to your email
+$to = 'info@aprealestate.co.uk'; // Change this to your email
 ```
 
 ### Step 2: Upload Files to Hostinger VPS
